@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>Volière Stansstad</title>
 </head>
-<body onload="myFunction()">
+	<body onload="myFunction()">
 	<p>The content of the document......</p>
 	<div>
 		<img src="coming-soon.jpg"/>
@@ -12,7 +12,8 @@
 
 	<script>
 		function myFunction() {
-		  alert("Page is loaded");
+			var sPageURL = window.location.search.substring(1);
+		  alert("Page is loaded" + sPageURL);
 		}
 	</script>
 </body>
