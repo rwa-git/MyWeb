@@ -2,37 +2,91 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Volière Stansstad</title>
+	<title>Parameters</title>
+	<style>
+		body {
+			padding: 14px;
+			text-align: center;
+		}
+
+		table {
+			width: 100%;
+			margin: 20px auto;
+			table-layout: auto;
+		}
+
+		thead {
+			background-color: #dedede;
+		}
+
+		.fixed {
+			table-layout: fixed;
+		}
+
+		table,
+		td,
+		th {
+			border-collapse: collapse;
+		}
+
+		th,
+		td {
+			padding: 10px;
+			border: solid 1px;
+			text-align: center;
+		}
+	</style>
 </head>
-	<body onload="myFunction()">
-	<p>The content of the document......</p>
-    <div>
-        <span id="ParamName">AAA</span>
-        <br/>
-        <span id="ParamVal">BBCCB</span>
-	</div>
+<body onload="myFunction()">
+
+	<h2>Result <code>params</code></h2>
+
+	<table id="t">
+		<thead>
+		<tr>
+			<th>Parameter Name</th>
+			<th>Value</th>
+			<th>Info</th>
+		</tr>
+		</thead>
+		<tbody id="tr-row">
+		</tbody>
+		<tfoot>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		</tfoot>
+	</table>
 	
-	<div id='result' style="display: flex; flex-direction: column;"></div>
+	<button class="tl"><b>Toggle table-layout: fixed</b></button>
 
 	<script>
 		function myFunction() {
-			var result = document.getElementById('result');
+			var row = document.getElementById('tr-row');
 
 			var sPageURL = window.location.search.substring(1);
 			var sURLVariables = sPageURL.split('&');
+
 			for (var i = 0; i < sURLVariables.length; i++)
 			{
-				var sParameterName = sURLVariables[i].split('=');
-				if (sParameterName[0] !== '')
+				var sParameter = sURLVariables[i].split('=');
+				if (sParameter[0] !== '')
 				{
-					document.getElementById('ParamName').innerHTML = sParameterName[0];
-					document.getElementById('ParamVal').innerHTML = sParameterName[1];
-					var row = "<div style='felx: 0 0 auto;'>" + sParameterName[0] + ":</div>" +
-								"<div style='felx: 0 0 auto;'>" + sParameterName[1] + ":</div>";
-					result.innerHTML += row + '<br />';
+					row.innerHTML += '<tr><td>' + sParameter[0] + '</td>' +
+										'<td>' + sParameter[1] + '</td>' +
+										'<td></td></tr>';
 				}
 			}
-		}
+		};
+
+		var tlBtn = document.querySelector('.tl'),
+		tbl = document.getElementById('t');
+
+		tlBtn.addEventListener('click', function() {
+			tbl.classList.toggle('fixed');
+		}, false);		
 	</script>
 </body>
 </html>
