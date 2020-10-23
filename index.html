@@ -6,14 +6,25 @@
 </head>
 	<body onload="myFunction()">
 	<p>The content of the document......</p>
-	<div>
-		<img src="coming-soon.jpg"/>
-	</div>
+    <div>
+        <span id="ParamName">AAA</span>
+        <br/>
+        </span id="ParamVal">BBB</span>
+    </div>
 
 	<script>
 		function myFunction() {
 			var sPageURL = window.location.search.substring(1);
-		  alert("Page is loaded" + sPageURL);
+			var sURLVariables = sPageURL.split('&');
+			for (var i = 0; i < sURLVariables.length; i++)
+			{
+				var sParameterName = sURLVariables[i].split('=');
+				if (sParameterName[0] !== '')
+				{
+					document.getElementById('ParamName').innerHTML = sParameterName[0];
+					document.getElementById('ParamVal').innerHTML = sParameterName[1];
+				}
+			}
 		}
 	</script>
 </body>
