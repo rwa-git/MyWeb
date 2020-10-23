@@ -12,9 +12,7 @@
         <span id="ParamVal">BBCCB</span>
 	</div>
 	
-	<div>
-		<span id='result'></span>
-	</div>
+	<div id='result' style="display: flex; flex-direction: column;"></div>
 
 	<script>
 		function myFunction() {
@@ -29,8 +27,8 @@
 				{
 					document.getElementById('ParamName').innerHTML = sParameterName[0];
 					document.getElementById('ParamVal').innerHTML = sParameterName[1];
-					var row = '<div>' + sParameterName[0] + ':</div>' +
-								'<div>' + sParameterName[1] + '</div>';	
+					var row = "<div style='felx: 0 0 auto;'>" + sParameterName[0] + ":</div>" +
+								"<div style='felx: 0 0 auto;'>" + sParameterName[1] + ":</div>";
 					result.innerHTML += row + '<br />';
 				}
 			}
